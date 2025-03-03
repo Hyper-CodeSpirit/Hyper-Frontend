@@ -1,5 +1,7 @@
 .sidebar-container{
     padding: 1rem;
+    background-color: var(--seperatoor);
+    border-right: 2px solid var(--bg);
 
     .header{
         display: inline-block;
@@ -33,6 +35,8 @@
         flex-direction: column;
         justify-content: space-between;
         margin-top: 2rem;
+        
+
 
         .sidebar-body{
             display: flex;
