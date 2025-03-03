@@ -3,6 +3,8 @@
   --textColor: black;
   --softBg: #f0f0f0;
   --softTextColor: #626262;
+  --primary: #3E8DD4CC;
+  --secondary: #3E8DD4;
 }
 
 * {
@@ -55,7 +57,7 @@ a {
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
-  background: var(--Primary-Color, #3E8DD4CC);
+  background: #3E8DD4CC;
   color: var(--softBg);
   font-size: 1.5rem;
   font-weight: 600;
@@ -64,7 +66,7 @@ a {
 }
 
 .hyper-button:hover {
-  background: var(--Primary-Color, #3E8DD4);
+  background: #3E8DD4;
 }
 
 @media screen and (max-width: 1536px) {
