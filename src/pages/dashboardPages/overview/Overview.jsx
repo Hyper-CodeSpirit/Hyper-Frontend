@@ -1,8 +1,9 @@
 import React from 'react'
 
+import './overview.scss'
 const OverviewPage = () => {
   return (
-    <div>OverviewPage</div>
+    <div className='overview-container'>OverviewPage</div>
   )
 }
 
