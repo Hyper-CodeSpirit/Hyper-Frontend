@@ -8,8 +8,8 @@ function PublicRoutes() {
     return (
         <>
             <Route path="/" element={<Homepage />} />
-            <Route path="/signin" element={<LoginPage />} />
-            <Route path="/signup" element={<RegisterPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
             </>
     );
 }
