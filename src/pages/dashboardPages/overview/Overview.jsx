@@ -153,7 +153,7 @@ const vehicleData = {categories: ["22", "23", "24", "25", "26", "27", "28"], dat
             </div>
           </div>
 
-          <div className="clients">
+          <div className="clients-overview">
             <div className="header">Clients</div>
             <table className="client-container">
               <thead>
@@ -216,7 +216,22 @@ const vehicleData = {categories: ["22", "23", "24", "25", "26", "27", "28"], dat
               </table>
           </div>
         </div>
-        <div className="right-overview-container">Right</div>
+        <div className="right-overview-container">
+          <div className="popular-vehicles">
+            <div className="header">
+              <div className="sized-box"></div>
+              <div className="header-title">Popular Vehicles</div>
+            </div>
+
+            <div className="popular-vehicles-container">
+              <div className="header">
+                <div className="vehicle-heading">Vehicle</div>
+                <div className="vehicle-heading">Earning</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
   )

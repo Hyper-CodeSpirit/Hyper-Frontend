@@ -128,7 +128,7 @@
                         display: flex;
                         flex-direction: row;
                         align-items: center;
-                        gap: 0.5rem;
+                        gap: 1rem;
                         .sized-box{
                             width: 1.2rem;
                             height: 2rem;
@@ -299,7 +299,7 @@
             }
         }
 
-        .clients{
+        .clients-overview{
             width: 97%;
             display: flex;
             flex-direction: column;
@@ -394,7 +394,7 @@
 
                 .hyper-button{
                     width: fit-content;
-                    padding: 0.2rem 1rem;
+                    // padding: 0.3rem 1rem;
                 }
 
             }
@@ -426,6 +426,53 @@
     }
 
     .right-overview-container{
-        // background-color: green;
+        
+        .popular-vehicles{
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--bg);
+            border-radius: 10px;
+            .header{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 1rem;
+                .sized-box{
+                    width: 1.2rem;
+                    height: 2rem;
+                    background: #B1E5FC;
+                    border-radius: 5px;
+                }
+
+                .header-title{
+                    font-size: 1rem;
+                    font-weight: 500;
+                    color: var(--textColor);
+                }
+            }
+
+            .popular-vehicles-container{
+                margin-top: 3rem;
+                .header{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 1rem;
+                    color: var(--softTextColor);
+                    padding-bottom: 1.5rem;
+                    border-bottom: 1px solid var(--softTextColor);
+
+
+                    .vehicle-heading{
+                        font-size: 1rem;
+                        font-weight: 500;
+                        color: var(--textColor);
+                    }
+                }
+            }
+        }
     }
 }
