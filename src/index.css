@@ -74,6 +74,26 @@ a {
   background: #3E8DD4;
 }
 
+.hyper-button-secondary{
+  display: inline-block;
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background: transparent;
+  border: 1px solid #3E8DD4CC;
+  color: #3E8DD4CC;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.hyper-button-secondary:hover {
+  background: #3E8DD4;
+  color: var(--bg);
+}
+
 @media screen and (max-width: 1536px) {
   .wrapper {
     max-width: 1366px;
