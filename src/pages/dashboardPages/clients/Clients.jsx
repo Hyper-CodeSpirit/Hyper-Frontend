@@ -9,7 +9,7 @@ import ClientCarImg from "../../../assets/images/client_car.png";
 
 const ClientsPage = () => {
   return (
-    <div className="top-layer-overview-container">
+    <div className="top-layer-client-container">
       <div className="header">
         <div className="title">Clients</div>
       </div>
