@@ -1,11 +1,11 @@
 import { Route } from "react-router-dom";
-import DashboardPage from "../pages/dashbard/Dashboard";
 import OverviewPage from "../pages/dashboardPages/overview/Overview";
 import AppoinmentPage from "../pages/dashboardPages/appoinment/Appoinment";
 import InspectionsPage from "../pages/dashboardPages/inspections/Inspections";
 import ClientsPage from "../pages/dashboardPages/clients/Clients";
 import VehiclesPage from "../pages/dashboardPages/vehicles/Vehicles";
 import ServicesPage from "../pages/dashboardPages/services/Services";
+import DashboardPage from "../pages/dashboard/Dashboard";
 
 function SecureRoutes() {
     return (

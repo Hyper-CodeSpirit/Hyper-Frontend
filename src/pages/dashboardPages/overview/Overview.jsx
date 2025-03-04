@@ -8,6 +8,7 @@ import LollipopChart from '../../../components/charts/LollipopChart'
 import 'react-calendar/dist/Calendar.css';
 import HyperCalender from '../../../components/calender/HyperCalender'
 import clientData from '../../../data/client.data'
+import invoiceData from '../../../data/invoice.data'
 
 const OverviewPage = () => {
 
@@ -176,6 +177,43 @@ const vehicleData = {categories: ["22", "23", "24", "25", "26", "27", "28"], dat
                 )})}
               </tbody>
             </table>
+          </div>
+
+          <div className="invoices">
+            <div className="header">
+              <div className="invoice-header">Invices</div>
+              <div className="hyper-button">Create</div>
+            </div>
+
+              <table className='invoice-container'>
+                <thead>
+                  <tr>
+                    <th>All Inviced</th>
+                    <th>Date</th>
+                    <th>Vehicle</th>
+                    <th>Client</th>
+                    <th>Status</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {invoiceData.map((data, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{data.id}</td>
+                        <td>{data.date}</td>
+                        <td>{data.vehicle}</td>
+                        <td>{data.client}</td>
+                        <td>{data.status}</td>
+                        <td>{data.amount}</td>
+                        <td><div className="invoice-action">View</div></td>
+                      </tr>
+                    )
+                  })}
+                  </tbody>              
+              </table>
           </div>
         </div>
         <div className="right-overview-container">Right</div>
