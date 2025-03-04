@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from 'react'
+import React, {useEffect, useState } from 'react'
 import { GiF1Car } from 'react-icons/gi'
 
 import './sidebar.scss'
