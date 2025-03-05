@@ -10,6 +10,7 @@ import HyperCalender from '../../../components/calender/HyperCalender'
 import clientData from '../../../data/client.data'
 import invoiceData from '../../../data/invoice.data'
 import vehicleData from '../../../data/vehicle.data'
+import { IoMdAddCircleOutline } from 'react-icons/io'
 
 const OverviewPage = () => {
 
@@ -140,7 +141,7 @@ function priceFormatter(price) {
                 <div className="quick-action-list">
 
                 <div className="quick-action">
-                <div className="action-avatar"><span>+</span></div>
+                <div className="action-avatar"><IoMdAddCircleOutline /></div>
                 <div className="action-details">
                     <div className="action-title">Create new appointment</div>
                     <div className="action-description">Add a new appointment to the system</div>
@@ -148,7 +149,7 @@ function priceFormatter(price) {
                 </div>
 
                 <div className="quick-action">
-                  <div className="action-avatar"><span>+</span></div>
+                  <div className="action-avatar"><IoMdAddCircleOutline /></div>
                   <div className="action-details">
                     <div className="action-title">Create new invoice</div>
                     <div className="action-description">Add a new invoice to the system</div>

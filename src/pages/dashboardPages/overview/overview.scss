@@ -249,24 +249,8 @@
                             // }
 
                             .action-avatar{
-                                position: relative;
-                                width: 50px;
-                                height: 50px;
-                                border-radius: 50%;
-                                border: 2px solid var(--textColor);
-                                background-color: transparent;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                
-
-                                span{
-                                    position: absolute;
-                                    top: -9px;
-                                    color: var(--primary);
-                                    font-size: 3.5rem;
-                                    font-weight: bold;
-                                }
+                                color: var(--primary);
+                                font-size: 4rem;
                             }
 
                             .action-details{
