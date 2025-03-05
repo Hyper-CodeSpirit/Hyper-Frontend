@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { data } from 'react-router-dom';
 
 class BaseAPI {
   constructor() {
-    this.baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+    this.baseUrl = process.env.REACT_APP_BASE_URL || 'http://localhost:8080';
     this.api = axios.create({
       baseURL: this.baseUrl,
       headers: {
@@ -12,6 +13,8 @@ class BaseAPI {
   }
 
   async request(endpoint, method = 'GET', body = null, params = {}) {
+
+    console.log('Request:', method, endpoint, body, params);
     try {
       const response = await this.api({
         url: endpoint,
@@ -19,7 +22,9 @@ class BaseAPI {
         data: body,
         params,
       });
-      return response.data;
+
+      const res = {data: response.data, status: response.status};
+      return res;
     } catch (error) {
       this.handleError(error);
     }
@@ -30,6 +35,7 @@ class BaseAPI {
   }
 
   async post(endpoint, body = {}, params = {}) {
+    console.log('POST', endpoint, body, params);
     return this.request(endpoint, 'POST', body, params);
   }
 
@@ -42,6 +48,7 @@ class BaseAPI {
   }
 
   handleError(error) {
+    console.error('API Error:', error);
     if (error.response) {
       console.error('API Response Error:', error.response.data);
       throw new Error(error.response.data.message || 'API Error');
@@ -55,4 +62,5 @@ class BaseAPI {
   }
 }
 
-export default new BaseAPI();
+// ✅ Correctly export as default
+export default BaseAPI;
