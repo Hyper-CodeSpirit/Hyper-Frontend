@@ -4,9 +4,11 @@ import GoogleIcon from "../../assets/icons/google.png";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { AuthAPI } from "../../api/auth/auth.api";
+import { useNavigate } from "react-router-dom";
 
 const GoogleSignInBtn = () => {
     const authApi = new AuthAPI();
+    const navigate = useNavigate();
     const login = useGoogleLogin({
         onSuccess: async (tokenResponse) => {
             console.log("Token Response:", tokenResponse);
@@ -20,7 +22,10 @@ const GoogleSignInBtn = () => {
                 });
 
                 console.log("User Info:", data); // Contains email, name, picture, etc.
-                await authApi.googleSignIn(data);
+                const res = await authApi.googleSignIn(data);
+                if(res) {
+                    navigate('/dashboard');
+                }
             } catch (error) {
                 console.error("Error fetching user info:", error);
             }
