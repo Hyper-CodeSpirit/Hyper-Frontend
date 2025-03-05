@@ -1,4 +1,5 @@
 import React from "react";
+import Dropdown from 'react-bootstrap/Dropdown';
 
 import "./clients.scss";
 import { FaPhone } from "react-icons/fa6";
@@ -87,9 +88,19 @@ const ClientsPage = () => {
                     <td>{data.phone}</td>
                     <td>{data.email}</td>
                     <td>
-                      <button className="client-list-action-btn">
-                        <SlOptionsVertical />
-                      </button>
+                      <div className="menu-client-action">
+                        <Dropdown>
+                          <Dropdown.Toggle
+                            id="menu-dropdown" className="menu-client-dropdown"
+                          >
+                            <SlOptionsVertical />
+                          </Dropdown.Toggle>
+                          <Dropdown.Menu>
+                            <Dropdown.Item href="#edit">Edit</Dropdown.Item>
+                            <Dropdown.Item href="#delete">Delete</Dropdown.Item>
+                          </Dropdown.Menu>
+                        </Dropdown>
+                      </div>
                     </td>
                   </tr>
                 );
@@ -123,6 +134,9 @@ const ClientsPage = () => {
             {clientListData.slice(0, 4).map((data, index) => {
               return (
                 <div key={index} className="client-left-col">
+                  <button className="menu-btn">
+                    <SlOptionsVertical />
+                  </button>
                   <div className="profile-img">
                     <img src={ProfileImg} />
                   </div>

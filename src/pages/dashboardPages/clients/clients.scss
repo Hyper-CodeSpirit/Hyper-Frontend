@@ -14,6 +14,38 @@
 
 }
 
+.menu-btn {
+    border: none;
+    background: transparent;
+    text-align: right;
+    width: 100%;
+    cursor: pointer;
+}
+
+.menu-client-action{
+    .dropdown-toggle:after {
+        border: 0;
+     }
+
+     .menu-client-dropdown{
+        background-color: transparent;
+        color: var(--softTextColor);
+        border: none;
+
+        &:hover{
+            background-color: transparent;
+            color: var(--softTextColor);
+        }
+        &:active{
+            background-color: transparent;
+            color: var(--softTextColor);
+        }
+     }
+
+
+}
+
+
 .top-layer-client-container {
     width: 100%;
     display: grid;
@@ -46,29 +78,29 @@
                 color: var(--textColor);
             }
 
-            .show-status{
-                display: flex;
-                flex-direction: row;
-                gap: 1rem;
-                align-items: center;
+            // .show-status{
+            //     display: flex;
+            //     flex-direction: row;
+            //     gap: 1rem;
+            //     align-items: center;
 
-                h6 {
-                    font-size: 1rem;
-                    font-weight: 500;
-                }
+            //     h6 {
+            //         font-size: 1rem;
+            //         font-weight: 500;
+            //     }
 
-                .active-filter{
-                    font-size: 12px;
-                    border-radius: 10px;
-                    padding: 0.3rem 0.5rem;
-                    color: var(--softTextColor);
-                    background-color: var(--bg);
+            //     .active-filter{
+            //         font-size: 12px;
+            //         border-radius: 10px;
+            //         padding: 0.3rem 0.5rem;
+            //         color: var(--softTextColor);
+            //         background-color: var(--bg);
 
-                    option{
-                        color: var(--textColor);
-                    }
-                }
-            }
+            //         option{
+            //             color: var(--textColor);
+            //         }
+            //     }
+            // }
 
             .hyper-button {
                 width: fit-content;
@@ -98,13 +130,6 @@
                 padding: 1rem;
                 border-bottom: 1px solid var(--seperatoor);
                 text-align: center;
-
-                .client-list-action-btn {
-                    border: none;
-                    background: transparent;
-                    text-align: center;
-                    color: var(--softTextColor);
-                }
             }
         }
 
