@@ -3,7 +3,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
 
     .client-header {
         padding-top: 30px;
@@ -63,7 +62,7 @@
         padding: 1rem;
         background-color: var(--bg);
         border-radius: 10px;
-        margin-top: 3rem;
+        margin-top: 2rem;
 
         .header {
             display: flex;
@@ -104,7 +103,6 @@
 
             .hyper-button {
                 width: fit-content;
-                // padding: 0.3rem 1rem;
             }
 
         }
@@ -144,7 +142,7 @@
         padding: 1rem;
         background-color: var(--bg);
         border-radius: 10px;
-        margin-top: 3rem;
+        margin-top: 2rem;
 
         .new-client-list{
             display: flex;

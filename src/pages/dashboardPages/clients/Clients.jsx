@@ -1,5 +1,6 @@
 import React from "react";
-import Dropdown from 'react-bootstrap/Dropdown';
+import Dropdown from "react-bootstrap/Dropdown";
+import ClientAddModel from "../../../components/models/clientActionModel/ClientAddModel";
 
 import "./clients.scss";
 import { FaPhone } from "react-icons/fa6";
@@ -60,17 +61,19 @@ const ClientsPage = () => {
                 <option value="year">Reguler</option>
               </select>
             </div> */}
-            <div className="hyper-button">Create</div>
+            <ClientAddModel
+              trigger={<div className="hyper-button">Create</div>}
+            />
           </div>
 
           <table className="client-list-table">
             <thead>
               <tr>
                 <th>NO</th>
-                <th>CODE</th>
+                <th>VEHICLE ID</th>
                 <th>CLIENT NAME</th>
                 <th>ADDRESS</th>
-                <th>CONTACT PERSON</th>
+                <th>NIC</th>
                 <th>PHONE</th>
                 <th>EMAIL</th>
               </tr>
@@ -81,17 +84,18 @@ const ClientsPage = () => {
                 return (
                   <tr key={index}>
                     <td>{data.no}</td>
-                    <td>{data.code}</td>
+                    <td>{data.vehicleId}</td>
                     <td>{data.clientName}</td>
                     <td>{data.address}</td>
-                    <td>{data.contactPerson}</td>
+                    <td>{data.NIC}</td>
                     <td>{data.phone}</td>
                     <td>{data.email}</td>
                     <td>
                       <div className="menu-client-action">
                         <Dropdown>
                           <Dropdown.Toggle
-                            id="menu-dropdown" className="menu-client-dropdown"
+                            id="menu-dropdown"
+                            className="menu-client-dropdown"
                           >
                             <SlOptionsVertical />
                           </Dropdown.Toggle>
