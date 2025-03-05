@@ -9,6 +9,8 @@ import 'react-calendar/dist/Calendar.css';
 import HyperCalender from '../../../components/calender/HyperCalender'
 import clientData from '../../../data/client.data'
 import invoiceData from '../../../data/invoice.data'
+import vehicleData from '../../../data/vehicle.data'
+import { IoMdAddCircleOutline } from 'react-icons/io'
 
 const OverviewPage = () => {
 
@@ -45,8 +47,17 @@ const OverviewPage = () => {
     }
 ];
 
-const vehicleData = {categories: ["22", "23", "24", "25", "26", "27", "28"], data: [27, 20, 30, 18, 26, 15, 22]};
+const vehicleChartData = {categories: ["22", "23", "24", "25", "26", "27", "28"], data: [27, 20, 30, 18, 26, 15, 22]};
 
+function priceFormatter(price) {
+  const currencyFormatter = Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 3,
+  });
+
+  return currencyFormatter.format(price);
+}
   return (
     <div className='top-layer-overview-container'>
       <div className="header">
@@ -105,7 +116,7 @@ const vehicleData = {categories: ["22", "23", "24", "25", "26", "27", "28"], dat
             </div>
 
             <div className="vehicle-view-container">
-              <BarChart categories={vehicleData.categories} data={vehicleData.data} />
+              <BarChart categories={vehicleChartData.categories} data={vehicleChartData.data} />
             </div>
             </div>
 
@@ -130,7 +141,7 @@ const vehicleData = {categories: ["22", "23", "24", "25", "26", "27", "28"], dat
                 <div className="quick-action-list">
 
                 <div className="quick-action">
-                <div className="action-avatar"><span>+</span></div>
+                <div className="action-avatar"><IoMdAddCircleOutline /></div>
                 <div className="action-details">
                     <div className="action-title">Create new appointment</div>
                     <div className="action-description">Add a new appointment to the system</div>
@@ -138,7 +149,7 @@ const vehicleData = {categories: ["22", "23", "24", "25", "26", "27", "28"], dat
                 </div>
 
                 <div className="quick-action">
-                  <div className="action-avatar"><span>+</span></div>
+                  <div className="action-avatar"><IoMdAddCircleOutline /></div>
                   <div className="action-details">
                     <div className="action-title">Create new invoice</div>
                     <div className="action-description">Add a new invoice to the system</div>
@@ -228,6 +239,26 @@ const vehicleData = {categories: ["22", "23", "24", "25", "26", "27", "28"], dat
                 <div className="vehicle-heading">Vehicle</div>
                 <div className="vehicle-heading">Earning</div>
               </div>
+              <div className="popular-vehicle-list">
+                {vehicleData.map((data, index) => {
+                  return (
+                    <div key={index} className="popular-vehicle">
+                      <div className="vehicle-detail">
+                        <img src={data.image} alt="vehicle" className="vehicle-image"/>
+                        <div className="vehicle-name">{data.name}</div>
+                      </div>
+                      <div className="vehicle-earning">
+                        <div className="vehicle-price">{priceFormatter(data.price)}</div>
+                        <div className={`vehicle-status ${data.status === 'Active' ? 'active' : 'deactive'}`}>{data.status}</div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+              <div className="footer">
+                <div className="hyper-button-secondary">All products</div>
+              </div>
+
             </div>
 
           </div>
