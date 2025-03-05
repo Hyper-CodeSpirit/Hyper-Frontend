@@ -6,6 +6,7 @@ import ClientsPage from "../pages/dashboardPages/clients/Clients";
 import VehiclesPage from "../pages/dashboardPages/vehicles/Vehicles";
 import ServicesPage from "../pages/dashboardPages/services/Services";
 import DashboardPage from "../pages/dashboard/Dashboard";
+import InvoicesPage from "../pages/dashboardPages/invoices/Invoices";
 
 function SecureRoutes() {
     return (
@@ -14,6 +15,7 @@ function SecureRoutes() {
             <Route index element={<OverviewPage/>} />
             <Route path="appoinment" element={<AppoinmentPage/>} />
             <Route path="inspections" element={<InspectionsPage/>} />
+            <Route path="invoices" element={<InvoicesPage/>} />
             <Route path="clients" element={<ClientsPage/>} />
             <Route path="vehicles" element={<VehiclesPage/>} />
             <Route path="services" element={<ServicesPage/>} />
