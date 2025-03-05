@@ -459,6 +459,7 @@
 
                 .popular-vehicle-list{
                     margin-top: 2rem;
+                    padding: 0 1rem;
                     .popular-vehicle{
                         display: flex;
                         flex-direction: row;
@@ -473,14 +474,14 @@
 
                         .vehicle-detail{
                             display: flex;
-                            flex-direction: column;
+                            flex-direction: row;
                             align-items: center;
                             justify-content: center;
                             gap: 0.5rem;
 
                             .vehicle-image{
-                                width: 60px;
-                                height: 60px;
+                                height: 50px;
+                                aspect-ratio: 16/9;
                                 border-radius: 5px;
                            }
     
@@ -497,6 +498,7 @@
                             align-items: center;
                             justify-content: center;
                             gap: 0.5rem;
+
 
                             .vehicle-price{
                                 font-size: 1rem;
