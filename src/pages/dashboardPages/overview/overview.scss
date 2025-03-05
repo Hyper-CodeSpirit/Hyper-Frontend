@@ -472,6 +472,75 @@
                         color: var(--textColor);
                     }
                 }
+
+                .popular-vehicle-list{
+                    margin-top: 2rem;
+                    .popular-vehicle{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;
+                        gap: 1rem;
+                        padding: 1rem;
+                        background-color: var(--bg);
+                        border-radius: 10px;
+                        transition: all 0.3s ease-in-out;
+                        cursor: pointer;
+
+                        .vehicle-detail{
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 0.5rem;
+
+                            .vehicle-image{
+                                width: 60px;
+                                height: 60px;
+                                border-radius: 5px;
+                           }
+    
+                           .vehicle-name{
+                               font-size: 1rem;
+                               font-weight: 500;
+                               color: var(--textColor);
+                           }
+                        }
+
+                        .vehicle-earning{
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 0.5rem;
+
+                            .vehicle-price{
+                                font-size: 1rem;
+                                font-weight: 500;
+                                color: var(--textColor);
+                            }
+
+                            .vehicle-status{
+                                font-size: 1rem;
+                                font-weight: 500;
+                                padding: 0.2rem 0.7rem;
+                                color: var(--softTextColor);
+                                border-radius: 5px;
+
+                                &.active{
+                                    color: #43812c;
+                                    background-color:#adf198;
+                                }
+
+                                &.deactive{
+                                    color: #812c2c;
+                                    background-color:#f19898;
+                                }
+                            }
+                        }
+                       
+                    }
+                }
             }
         }
     }
