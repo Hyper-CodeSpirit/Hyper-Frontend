@@ -3,6 +3,8 @@ import "../authentication.scss"
 import { GiF1Car } from "react-icons/gi";
 import Banner from "../../../assets/images/register_banner.jpg";
 import GoogleIcon from "../../../assets/icons/google.png";
+import GoogleSignInBtn from '../../../components/google/GoogleSignInBtn';
+import { GoogleLogin } from '@react-oauth/google';
 
 const RegisterPage = () => {
 
@@ -74,10 +76,13 @@ const RegisterPage = () => {
             </div>
 
             <div className="alt-auths">
-              <div className="alt-auth">
-                <img src={GoogleIcon} alt="google-logo"/>
-                <div className="text">Sign up with Google</div>
-              </div>
+              <GoogleSignInBtn />
+
+              {/* <GoogleLogin onSuccess={(credentialResponse)=>{
+                    console.log(credentialResponse);
+                }} onError={()=>{
+                    console.log("error");
+                }}/> */}
             </div>
           </div>
 
