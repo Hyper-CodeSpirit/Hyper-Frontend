@@ -4,14 +4,16 @@ import { GiF1Car } from "react-icons/gi";
 import Banner from "../../../assets/images/register_banner.jpg";
 import GoogleSignInBtn from '../../../components/google/GoogleSignInBtn';
 import { AuthAPI } from '../../../api/auth/auth.api';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
 
       const authApi = new AuthAPI();
+      const navigate = useNavigate();
 
   const [formValues, setFormValues] = useState({
-    email: "test@gmail.com",
-    password: "123",
+    email: "",
+    password: "",
   }); 
   
   function handleChange(e) {
@@ -21,10 +23,13 @@ const LoginPage = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(formValues);
 
       const response = await authApi.login(formValues);
-      console.log(response);
+      if(response){
+        navigate('/dashboard');
+      }else{
+        setFormValues({email: "", password: ""});
+      }
       
     
   }
@@ -57,12 +62,12 @@ const LoginPage = () => {
 
 
             <div className="hyper-input-group">
-            <input type="text" className='input-field' id="email" name='email' onChange={handleChange} value={formValues.email} required/>
+            <input type="text" className='input-field' id="email" name='email' onChange={handleChange}  required/>
             <label className='input-label' htmlFor='email'>Your email address<span>*</span></label>
             </div>
 
             <div className="hyper-input-group">
-            <input type="password" className='input-field' id="password" name='passwrd' onChange={handleChange} value={formValues.password} required/>
+            <input type="password" className='input-field' id="password" name='password' onChange={handleChange}  required/>
             <label className='input-label' htmlFor='password'>Create Password<span>*</span></label>
             </div>
 

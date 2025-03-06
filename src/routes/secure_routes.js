@@ -7,11 +7,12 @@ import VehiclesPage from "../pages/dashboardPages/vehicles/Vehicles";
 import ServicesPage from "../pages/dashboardPages/services/Services";
 import DashboardPage from "../pages/dashboard/Dashboard";
 import InvoicesPage from "../pages/dashboardPages/invoices/Invoices";
+import { AuthorizeAdmin } from "../middleware/Auth";
 
 function SecureRoutes() {
     return (
         <>
-          <Route path="/dashboard/*" element={<DashboardPage />} >
+          <Route path="/dashboard/*" element={<AuthorizeAdmin><DashboardPage /></AuthorizeAdmin>} >
             <Route index element={<OverviewPage/>} />
             <Route path="appoinment" element={<AppoinmentPage/>} />
             <Route path="inspections" element={<InspectionsPage/>} />

@@ -14,7 +14,6 @@ class BaseAPI {
 
   async request(endpoint, method = 'GET', body = null, params = {}) {
 
-    console.log('Request:', method, endpoint, body, params);
     try {
       const response = await this.api({
         url: endpoint,
@@ -35,7 +34,6 @@ class BaseAPI {
   }
 
   async post(endpoint, body = {}, params = {}) {
-    console.log('POST', endpoint, body, params);
     return this.request(endpoint, 'POST', body, params);
   }
 
@@ -62,5 +60,4 @@ class BaseAPI {
   }
 }
 
-// ✅ Correctly export as default
 export default BaseAPI;
