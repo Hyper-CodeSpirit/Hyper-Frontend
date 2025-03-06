@@ -1,0 +1,253 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .client-header {
+        padding-top: 30px;
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: var(--textColor);
+    }
+
+}
+
+.menu-btn {
+    border: none;
+    background: transparent;
+    text-align: right;
+    width: 100%;
+    cursor: pointer;
+}
+
+.menu-client-action{
+    .dropdown-toggle:after {
+        border: 0;
+     }
+
+     .menu-client-dropdown{
+        background-color: transparent;
+        color: var(--softTextColor);
+        border: none;
+
+        &:hover{
+            background-color: transparent;
+            color: var(--softTextColor);
+        }
+        &:active{
+            background-color: transparent;
+            color: var(--softTextColor);
+        }
+     }
+
+
+}
+
+
+.top-layer-client-container {
+    width: 100%;
+    display: grid;
+    grid-template-areas:
+        "client-list new-client-list"
+        "frequent-clients frequent-clients";
+    grid-template-columns: 3fr 1fr;
+
+    .client-list-container {
+        grid-area: client-list;
+        width: 97%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        background-color: var(--bg);
+        border-radius: 10px;
+        margin-top: 2rem;
+
+        .header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+
+            .client-header {
+                font-size: 1.5rem;
+                font-weight: 500;
+                color: var(--textColor);
+            }
+
+            // .show-status{
+            //     display: flex;
+            //     flex-direction: row;
+            //     gap: 1rem;
+            //     align-items: center;
+
+            //     h6 {
+            //         font-size: 1rem;
+            //         font-weight: 500;
+            //     }
+
+            //     .active-filter{
+            //         font-size: 12px;
+            //         border-radius: 10px;
+            //         padding: 0.3rem 0.5rem;
+            //         color: var(--softTextColor);
+            //         background-color: var(--bg);
+
+            //         option{
+            //             color: var(--textColor);
+            //         }
+            //     }
+            // }
+
+            .hyper-button {
+                width: fit-content;
+            }
+
+        }
+
+        .client-list-table {
+            width: 100%;
+            font-size: 11px;
+
+            tr {
+                width: 100%;
+                color: var(--softTextColor);
+                background-color: var(--bg);
+
+            }
+
+            th {
+                padding: 1rem;
+                border-bottom: 1px solid var(--seperatoor);
+                text-align: center;
+            }
+
+            td {
+                padding: 1rem;
+                border-bottom: 1px solid var(--seperatoor);
+                text-align: center;
+            }
+        }
+
+    }
+
+    .new-client-list-container {
+        grid-area: new-client-list;
+        width: 97%; 
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        background-color: var(--bg);
+        border-radius: 10px;
+        margin-top: 2rem;
+
+        .new-client-list{
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            align-items: center;
+
+            img {
+                width: 60px;
+            }
+
+            .new-client-details{
+                display: flex;
+                flex-direction: column;
+                .new-client-name{
+                    font-size:medium;
+                    font-weight: 600;
+                    color: var(--textColor);
+                }
+
+                .new-client-email{
+                    font-size: small;
+                    color: var(--softTextColor);
+                }
+            }
+        }
+    }
+
+    .frequent-client-list-container {
+        grid-area: frequent-clients;
+    }
+
+    .client-profile-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        width: 100%;
+
+        .client-left-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--bg);
+            box-shadow: 4px 4px 8px 0px #00000040;
+            margin: 1rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            border-radius: 10px;
+
+            .profile-img img {
+                width: 12rem;
+                height: auto;
+                border-radius: 50%;
+            }
+
+            .profile-name {
+                color: var(--textColor);
+                padding-top: 0.5rem;
+                padding-bottom: 1.5rem;
+                font-size: medium;
+                font-weight: 600;
+            }
+
+            .profile-details {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                // color: var(--textColor);
+                font-size: small;
+                color: var(--softTextColor);
+
+                .profile-data {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 1rem;
+
+                    .profile-detail {}
+                }
+            }
+        }
+
+        //     .client-right-col {
+        //         flex: 2;
+        //         .profile-car-img img {
+        //             width: 25rem;
+        //             height: auto;
+        //             transform: scaleX(-1);
+        //             margin-left: 5rem;
+        //         }
+
+        //         .profile-btns{
+        //             display: flex;
+        //             flex-direction: row;
+        //             gap: 1rem;
+        //             margin-right: 15rem;
+        //             margin-left: 5rem;
+
+        //             .hyper-button, .hyper-button-secondary{
+        //                 padding: 0.2rem 1rem;
+        //             }
+        //         }
+        //     }
+    }
+
+}
