@@ -56,22 +56,22 @@ const RegisterPage = () => {
 
         <div className="form-group register-form">
         <div className="hyper-input-group">
-            <input type="text" className='input-field' id="name" name='name' onChange={handleChange} value={formValues.name} autoFocus required/>
+            <input type="text" className='input-field' id="name" name='name' onChange={handleChange}  autoFocus required/>
             <label className='input-label' htmlFor='name'>Name<span>*</span></label>
             </div>
 
             <div className="hyper-input-group">
-            <input type="text" className='input-field' id="email" name='email' onChange={handleChange} value={formValues.email} required/>
+            <input type="text" className='input-field' id="email" name='email' onChange={handleChange}  required/>
             <label className='input-label' htmlFor='email'>Your email address<span>*</span></label>
             </div>
 
             <div className="hyper-input-group">
-            <input type="password" className='input-field' id="password" name='passwrd' onChange={handleChange} value={formValues.password} required/>
+            <input type="password" className='input-field' id="password" name='passwrd' onChange={handleChange}  required/>
             <label className='input-label' htmlFor='password'>Create Password<span>*</span></label>
             </div>
 
             <div className="hyper-input-group">
-            <input type="password" className='input-field' id="confirm-password" name='confirmPassword' onChange={handleChange} value={formValues.confirmPassword} required/>
+            <input type="password" className='input-field' id="confirm-password" name='confirmPassword' onChange={handleChange} required/>
             <label className='input-label' htmlFor='confirm-password'>Re-Enter Password<span>*</span></label>
             </div>
 
