@@ -4,16 +4,17 @@ import { GiF1Car } from "react-icons/gi";
 import Banner from "../../../assets/images/register_banner.jpg";
 import GoogleSignInBtn from '../../../components/google/GoogleSignInBtn';
 import { AuthAPI } from '../../../api/auth/auth.api';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
 
       const authApi = new AuthAPI();
-
+      const navigate = useNavigate();
   const [formValues, setFormValues] = useState({
-    name: "Shenal Akalanka",
-    email: "test@gmail.com",
-    password: "123",
-    confirmPassword: "123",
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   }); 
   
   function handleChange(e) {
@@ -23,13 +24,20 @@ const RegisterPage = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(formValues);
     if(formValues.password !== formValues.confirmPassword) {
      return alert("Passwords do not match");
     }
     else{
       const response = await authApi.register(formValues);
-      
+      if(response){
+        navigate('/dashboard');
+      }else{
+        setFormValues({name: "",
+          email: "",
+          password: "",
+          confirmPassword: ""
+        });
+      }
     }
   }
   
@@ -85,12 +93,6 @@ const RegisterPage = () => {
 
             <div className="alt-auths">
               <GoogleSignInBtn />
-
-              {/* <GoogleLogin onSuccess={(credentialResponse)=>{
-                    console.log(credentialResponse);
-                }} onError={()=>{
-                    console.log("error");
-                }}/> */}
             </div>
           </div>
 

@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import BaseAPI from "../BaseApi";
 
 export class AuthAPI {
@@ -17,7 +18,12 @@ export class AuthAPI {
         localStorage.setItem('user', JSON.stringify({name, picture, email}));
       return response.data;
     }else {
-        throw new Error(response.data.message);
+        Swal.fire({
+            icon: "error",
+            title: "Authentication Error!",
+            text: response.data.message,
+          });
+          return null;
     }
   }
 
@@ -32,7 +38,12 @@ export class AuthAPI {
         localStorage.setItem('user', JSON.stringify({name, picture:null, email}));
         return response.data;
     }else {
-        throw new Error(response.data.message);
+        Swal.fire({
+            icon: "error",
+            title: "Authentication Error!",
+            text: response.data.message,
+          });
+          return null;
     }
   }
 
@@ -45,9 +56,16 @@ export class AuthAPI {
             const res = response.data;
             localStorage.setItem('token', JSON.stringify(res));
             localStorage.setItem('user', JSON.stringify({name:res.username, picture:null, email}));
+            
             return response.data;
         }else {
-            throw new Error(response.data.message);
+            Swal.fire({
+                icon: "error",
+                title: "Authentication Error!",
+                text: response.data.message,
+              });
+              return null;
+
         }
     }
 }
