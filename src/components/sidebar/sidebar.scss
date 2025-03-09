@@ -1,8 +1,8 @@
 .sidebar-container{
     padding: 1rem;
     position: sticky;
-    background-color: var(--seperatoor);
-    border-right: 2px solid var(--bg);
+    background-color: var(--bg);
+    border-right: 2px solid var(--seperatoor);
 
     .header{
         display: inline-block;
@@ -67,14 +67,14 @@
                 }
 
                 .sidebar-icon{
-                    font-size: 1.5rem;
+                    font-size: 1rem;
                     color: var(--softTextColor);
                 }
 
 
 
                 .sidebar-title{
-                    font-size: 1rem;
+                    font-size: 0.9rem;
                     color: var(--softTextColor);
                 }
             }
@@ -124,14 +124,14 @@
                 }
 
                 .sidebar-icon{
-                    font-size: 1.5rem;
+                    font-size: 1rem;
                     color: var(--softTextColor);
                 }
 
 
 
                 .sidebar-title{
-                    font-size: 1rem;
+                    font-size: 0.9rem;
                     color: var(--softTextColor);
                 }
             }

@@ -3,7 +3,7 @@
     width: 100%;
     height: 100vh;
     margin: 0 auto;
-    grid-template-columns: 18% 82%;
+    grid-template-columns: 15% 85%;
     overflow: hidden;
 
     .navbar-wrapper {
@@ -16,8 +16,7 @@
             flex-grow: 1;
             width: 100%;
             padding: 1rem;
-            padding-top: 3rem;
-            background-color: var(--bg);
+            background-color: var(--seperatoor);
             overflow-y: auto;
             height: calc(100vh - 50px);
         }

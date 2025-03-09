@@ -2,10 +2,14 @@ import React, { useState } from 'react'
 import "../authentication.scss"
 import { GiF1Car } from "react-icons/gi";
 import Banner from "../../../assets/images/register_banner.jpg";
-import GoogleIcon from "../../../assets/icons/google.png";
+import GoogleSignInBtn from '../../../components/google/GoogleSignInBtn';
+import { AuthAPI } from '../../../api/auth/auth.api';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
 
+      const authApi = new AuthAPI();
+      const navigate = useNavigate();
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
@@ -18,11 +22,25 @@ const RegisterPage = () => {
     setFormValues({ ...formValues, [name]: value });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log(formValues);
+    if(formValues.password !== formValues.confirmPassword) {
+     return alert("Passwords do not match");
+    }
+    else{
+      const response = await authApi.register(formValues);
+      if(response){
+        navigate('/dashboard');
+      }else{
+        setFormValues({name: "",
+          email: "",
+          password: "",
+          confirmPassword: ""
+        });
+      }
+    }
   }
-
+  
   return (
     <div className='container auth-container'>
       <div className="left-container">
@@ -38,22 +56,22 @@ const RegisterPage = () => {
 
         <div className="form-group register-form">
         <div className="hyper-input-group">
-            <input type="text" className='input-field' id="name" name='name' onChange={handleChange} autoFocus required/>
+            <input type="text" className='input-field' id="name" name='name' onChange={handleChange}  autoFocus required/>
             <label className='input-label' htmlFor='name'>Name<span>*</span></label>
             </div>
 
             <div className="hyper-input-group">
-            <input type="text" className='input-field' id="email" name='email' onChange={handleChange} required/>
+            <input type="text" className='input-field' id="email" name='email' onChange={handleChange}  required/>
             <label className='input-label' htmlFor='email'>Your email address<span>*</span></label>
             </div>
 
             <div className="hyper-input-group">
-            <input type="text" className='input-field' id="password" name='passwrd' onChange={handleChange} required/>
+            <input type="password" className='input-field' id="password" name='passwrd' onChange={handleChange}  required/>
             <label className='input-label' htmlFor='password'>Create Password<span>*</span></label>
             </div>
 
             <div className="hyper-input-group">
-            <input type="text" className='input-field' id="confirm-password" name='confirmPassword' onChange={handleChange} required/>
+            <input type="password" className='input-field' id="confirm-password" name='confirmPassword' onChange={handleChange} required/>
             <label className='input-label' htmlFor='confirm-password'>Re-Enter Password<span>*</span></label>
             </div>
 
@@ -74,10 +92,7 @@ const RegisterPage = () => {
             </div>
 
             <div className="alt-auths">
-              <div className="alt-auth">
-                <img src={GoogleIcon} alt="google-logo"/>
-                <div className="text">Sign up with Google</div>
-              </div>
+              <GoogleSignInBtn />
             </div>
           </div>
 
