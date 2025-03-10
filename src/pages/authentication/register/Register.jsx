@@ -24,6 +24,7 @@ const RegisterPage = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    console.log(formValues);
     if(formValues.password !== formValues.confirmPassword) {
      return alert("Passwords do not match");
     }
@@ -66,7 +67,7 @@ const RegisterPage = () => {
             </div>
 
             <div className="hyper-input-group">
-            <input type="password" className='input-field' id="password" name='passwrd' onChange={handleChange}  required/>
+            <input type="password" className='input-field' id="password" name='password' onChange={handleChange}  required/>
             <label className='input-label' htmlFor='password'>Create Password<span>*</span></label>
             </div>
 
@@ -94,6 +95,7 @@ const RegisterPage = () => {
             <div className="alt-auths">
               <GoogleSignInBtn />
             </div>
+            <div className='auth-footer'>Do you already have an account? <span onClick={()=>navigate("/login")}>Login</span></div>
           </div>
 
 
