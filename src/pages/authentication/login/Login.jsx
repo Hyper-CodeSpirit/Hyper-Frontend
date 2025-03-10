@@ -74,6 +74,7 @@ const LoginPage = () => {
             <div className="hyper-checkbox-input">
             <button className='hyper-button mt-3' type='submit' onClick={handleSubmit}>Sign Up</button>
             </div>
+            <div className='auth-footer'>Don't you have an account? <span onClick={()=>navigate("/register")}>Register</span></div>
 
           </div>
 
