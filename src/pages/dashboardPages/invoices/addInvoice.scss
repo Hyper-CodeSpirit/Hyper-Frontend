@@ -1,0 +1,47 @@
+.add-invoice-container{
+    margin: 2%;
+    
+    .add-invoice-header{
+       padding-left: 2%;
+       padding-top: 2%;
+
+    }
+    .invoice-form{
+        padding: 2%;
+        width: 100%;
+        .submit-invoice{
+            font-size: 18px;
+            max-width: 100px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3E8DD4CC;
+            color: black;
+            margin-top: 15px;
+            margin-left: 80%;
+            padding: 8px 12px;
+        }
+        .submit-invoice:hover{
+            background-color: #3E8DD4;
+        }
+    }
+    .form-row {
+        font-size: 18px;
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+    
+        .form-field {
+            flex: 1;
+        }
+    }
+    input{
+        width: 80%;
+        border-radius: 5px;
+        
+    }
+    .status-input{
+        width: 60%;
+    }
+    
+}

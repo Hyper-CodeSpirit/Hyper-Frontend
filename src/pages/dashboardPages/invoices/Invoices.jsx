@@ -1,9 +1,197 @@
-import React from 'react'
+import React, { useState } from "react";
+import "./invoices.scss";
+import { IoIosAddCircle } from "react-icons/io";
+import { FaFilter } from "react-icons/fa";
+import Dropdown from "react-bootstrap/Dropdown";
+import { SlOptionsVertical } from "react-icons/sl";
+
+import invoiceData from "../../../data/invoice.data";
+import { Modal, Button } from "react-bootstrap";
+import AddInvoices from "./AddInvoices";
+import EditInvoice from "./EditInvoice";
 
 const InvoicesPage = () => {
-  return (
-    <div>InvoicesPage</div>
-  )
-}
+  const [addModal, setAddModal] = useState(false);
+  const [invoiceList, setInvoiceList] = useState(invoiceData);
+  const [editModal, setEditModal] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [selectedInvoice, setSelectedInvoice] = useState(null);
 
-export default InvoicesPage
+  const addToggleModal=()=>{
+    setAddModal(!addModal);
+  }
+  const deleteToggleModal=()=>{
+    setDeleteModal(!deleteModal);
+  }
+
+  const editToggleModal=()=>{
+    setEditModal(!editModal);
+    
+  }
+
+  const handleAddInvoice = (invoice) =>{
+    setInvoiceList([...invoiceList,invoice])
+    setAddModal(false);
+  }
+
+  const handleDeleteInvoice=()=>{
+    
+  }
+
+const handleEditInvoice = (updatedInvoice) => {
+  setInvoiceList(
+    invoiceList.map((invoice) =>
+      invoice.id === updatedInvoice.id ? updatedInvoice : invoice
+    )
+  );
+  setEditModal(false);
+};
+
+  return (
+    <div className="invoice-container">
+      <h1>Invoice</h1>
+      <div className="row header-btns d-flex justify-content-end">
+        <div className="head-btn-add col">
+          <button
+            type="button"
+            className="add-invoice-btn btn btn-outline-info"
+            onClick={addToggleModal}
+          >
+            <IoIosAddCircle size={20} />
+            <b className="add-btn">Add Invoices</b>
+          </button>
+        </div>
+        <div className="menu-status-action col head-btn-status">
+          <Dropdown>
+            <Dropdown.Toggle
+              id="menu-dropdown"
+              className="menu-status-dropdown"
+            >
+              <FaFilter />
+              <b className="filter-status">Filter By Status</b>
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item href="#paid">Paid</Dropdown.Item>
+              <Dropdown.Item href="#pending">Pending</Dropdown.Item>
+              <Dropdown.Item href="#draft">Draft</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
+      </div>
+
+      <div className="card invoice-details">
+        <div className="table-responsive">
+          <div className="table-caption">Invoices List</div>
+          <hr />
+          <table className="table table-borderless invoice-table">
+            <thead>
+              <tr>
+                <th scope="col">Client Name</th>
+                <th>Vehicle</th>
+                <th scope="col">Invoice Date</th>
+                <th scope="col">Due Date</th>
+                <th scope="col">Total Amount</th>
+                <th scope="col">Payment Status</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {invoiceList.map((invoice) => (
+                <tr key={invoice.id}>
+                  <td>{invoice.client}</td>
+                  <td>{invoice.vehicle}</td>
+                  <td>{invoice.date}</td>
+                  <td>{invoice.due_date}</td>
+                  <td>{invoice.amount}</td>
+                  <td>{invoice.status}</td>
+                  <td>
+                    <div className="menu-invoice-action">
+                      <Dropdown>
+                        <Dropdown.Toggle
+                          id="menu-dropdown"
+                          className="menu-invoice-dropdown"
+                        >
+                          <SlOptionsVertical />
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                          <Dropdown.Item
+                            href="#edit"
+                            onClick={() => editToggleModal(invoice)}
+                          >
+                            Edit
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            href="#delete"
+                            onClick={() => deleteToggleModal()}
+                          >
+                            Delete
+                          </Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <Modal
+        className="add-modal"
+        show={addModal}
+        onHide={addToggleModal}
+        size="lg"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>CREATE INVOICE</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <AddInvoices onAddInvoice={handleAddInvoice} />
+        </Modal.Body>
+      </Modal>
+
+      <Modal
+        className="delete-modal"
+        show={deleteModal}
+        onHide={() => deleteToggleModal()}
+        size="md"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>DELETE INVOICE</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Are you sure you want to delete this invoice?</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => deleteToggleModal()}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={handleDeleteInvoice}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal
+        show={editModal}
+        onHide={() => setEditModal(false)}
+        size="lg"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>EDIT INVOICE</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {selectedInvoice && (
+            <EditInvoice invoice={selectedInvoice} onSave={handleEditInvoice} />
+          )}
+        </Modal.Body>
+      </Modal>
+    </div>
+  );
+};
+
+export default InvoicesPage;
