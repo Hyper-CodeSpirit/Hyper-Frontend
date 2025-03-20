@@ -1,51 +1,94 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./invoices.scss";
 import { IoIosAddCircle } from "react-icons/io";
 import { FaFilter } from "react-icons/fa";
 import Dropdown from "react-bootstrap/Dropdown";
 import { SlOptionsVertical } from "react-icons/sl";
+import {
+  getAllInvoices,
+  createInvoice,
+  editInvoice,
+  deleteInvoice
+} from "../../../api/invoice/invoice.api";
 
-import invoiceData from "../../../data/invoice.data";
 import { Modal, Button } from "react-bootstrap";
 import AddInvoices from "./AddInvoices";
 import EditInvoice from "./EditInvoice";
 
 const InvoicesPage = () => {
   const [addModal, setAddModal] = useState(false);
-  const [invoiceList, setInvoiceList] = useState(invoiceData);
+  const [invoiceList, setInvoiceList] = useState([]);
   const [editModal, setEditModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [selectedInvoice, setSelectedInvoice] = useState(null);
 
-  const addToggleModal=()=>{
+  const addToggleModal = () => {
     setAddModal(!addModal);
-  }
-  const deleteToggleModal=()=>{
+  };
+  const deleteToggleModal = (invoice) => {
+    setSelectedInvoice(invoice);
     setDeleteModal(!deleteModal);
-  }
+  };
 
-  const editToggleModal=()=>{
+  const editToggleModal = (invoice) => {
+    setSelectedInvoice(invoice);
     setEditModal(!editModal);
-    
-  }
+  };
 
-  const handleAddInvoice = (invoice) =>{
-    setInvoiceList([...invoiceList,invoice])
-    setAddModal(false);
-  }
+  // Fetch all invoices on component mount
+  useEffect(() => {
+    fetchInvoices();
+  }, []);
 
-  const handleDeleteInvoice=()=>{
-    
-  }
+  const fetchInvoices = async () => {
+    try {
+      const invoices = await getAllInvoices();
+      setInvoiceList(invoices);
+    } catch (error) {
+      console.error("Error fetching invoices:", error);
+    }
+  };
 
-const handleEditInvoice = (updatedInvoice) => {
-  setInvoiceList(
-    invoiceList.map((invoice) =>
-      invoice.id === updatedInvoice.id ? updatedInvoice : invoice
-    )
-  );
-  setEditModal(false);
-};
+  // Add Invoice
+  const handleAddInvoice = async (invoice) => {
+    try { 
+      const newInvoice = await createInvoice(invoice);  
+      setInvoiceList((prevList) => [...prevList, newInvoice]); // Update state properly
+      setAddModal(false);
+    } catch (error) {
+      console.error("Error adding invoice:", error);
+    }
+  };
+
+  // Edit Invoice
+  const handleEditInvoice = async (updatedInvoice) => {
+    try {
+      await editInvoice(updatedInvoice.id, updatedInvoice);
+      setInvoiceList(
+        invoiceList.map((invoice) =>
+          invoice.id === updatedInvoice.id ? updatedInvoice : invoice
+        )
+      );
+      setEditModal(false);
+    } catch (error) {
+      console.error("Error editing invoice:", error);
+    }
+  };
+
+  // Delete Invoice
+  const handleDeleteInvoice = async () => {
+    if (!selectedInvoice) return;
+    try {
+      await deleteInvoice(selectedInvoice.id);
+      setInvoiceList(
+        invoiceList.filter((inv) => inv.id !== selectedInvoice.id)
+      );
+      setDeleteModal(false);
+    } catch (error) {
+      console.error("Error deleting invoice:", error);
+    }
+  };
+
 
   return (
     <div className="invoice-container">
@@ -101,7 +144,7 @@ const handleEditInvoice = (updatedInvoice) => {
                   <td>{invoice.client}</td>
                   <td>{invoice.vehicle}</td>
                   <td>{invoice.date}</td>
-                  <td>{invoice.due_date}</td>
+                  <td>{invoice.dueDate}</td>
                   <td>{invoice.amount}</td>
                   <td>{invoice.status}</td>
                   <td>
@@ -122,7 +165,7 @@ const handleEditInvoice = (updatedInvoice) => {
                           </Dropdown.Item>
                           <Dropdown.Item
                             href="#delete"
-                            onClick={() => deleteToggleModal()}
+                            onClick={() => deleteToggleModal(invoice)}
                           >
                             Delete
                           </Dropdown.Item>
@@ -185,9 +228,12 @@ const handleEditInvoice = (updatedInvoice) => {
           <Modal.Title>EDIT INVOICE</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {selectedInvoice && (
-            <EditInvoice invoice={selectedInvoice} onSave={handleEditInvoice} />
-          )}
+           {selectedInvoice && (
+            <EditInvoice 
+            invoice={selectedInvoice} 
+            onSave={handleEditInvoice} 
+            />
+           )}
         </Modal.Body>
       </Modal>
     </div>

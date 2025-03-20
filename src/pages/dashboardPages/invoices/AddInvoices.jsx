@@ -5,7 +5,7 @@ const AddInvoices = ({onAddInvoice}) => {
   const [formData, setFormData] = useState({
     client: "",
     date: "",
-    due_date: "",
+    dueDate: "",
     vehicle: "",
     status: "",
     amount: "",
@@ -20,7 +20,17 @@ const AddInvoices = ({onAddInvoice}) => {
     e.preventDefault();
     console.log("Invoice Submitted", formData);
     onAddInvoice(formData)
-    // Add submission logic here
+    console.log(formData)
+    setFormData({
+      // Reset form fields after successful addition
+      client: "",
+      date: "",
+      dueDate: "",
+      vehicle: "",
+      status: "",
+      amount: "",
+      service: "",
+    });
   };
   return (
     <div className="add-invoice-container">
@@ -64,8 +74,8 @@ const AddInvoices = ({onAddInvoice}) => {
               <div>Due Date</div>
               <input
                 type="date"
-                name="due_date"
-                value={formData.due_date}
+                name="dueDate"
+                value={formData.dueDate}
                 onChange={handleChanges}
                 required
               />

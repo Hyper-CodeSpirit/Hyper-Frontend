@@ -13,7 +13,7 @@ const EditInvoice = ({ invoice, onSave }) => {
   );
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: [e.target.value] });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
@@ -23,7 +23,7 @@ const EditInvoice = ({ invoice, onSave }) => {
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label>Client Name:</label>
       <input
         type="text"
@@ -51,8 +51,8 @@ const EditInvoice = ({ invoice, onSave }) => {
       <label>Date:</label>
       <input
         type="date"
-        name="due_date"
-        value={formData.due_date}
+        name="dueDate"
+        value={formData.dueDate}
         onChange={handleChange}
       />
 
@@ -78,7 +78,7 @@ const EditInvoice = ({ invoice, onSave }) => {
         onChange={handleChange}
       />
 
-      <button type="submit" onChange={handleSubmit}>
+      <button type="submit">
         Update Invoice
       </button>
     </form>
