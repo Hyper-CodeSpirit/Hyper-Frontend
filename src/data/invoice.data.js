@@ -2,6 +2,7 @@ const invoiceData = [
     {
         id:"INV-0096",
         date:"Nov 1, 2023",
+        due_date:"Nov 5 2023",
         vehicle: "SUV",
         client: "John Doe",
         status: "Paid",
@@ -11,6 +12,7 @@ const invoiceData = [
     {
         id:"INV-0097",
         date:"Nov 1, 2023",
+        due_date:"Nov 5 2023",
         vehicle: "Sedan",
         client: "Jone Smith",
         status: "Sent",
@@ -20,6 +22,7 @@ const invoiceData = [
     {
         id:"INV-0098",
         date:"Nov 1, 2023",
+        due_date:"Nov 5 2023",
         vehicle: "Truk",
         client: "Emma Johnson",
         status: "Draft",
@@ -29,6 +32,7 @@ const invoiceData = [
     {
         id:"INV-0099",
         date:"Nov 1, 2023",
+        due_date:"Nov 5 2023",
         vehicle: "Van",
         client: "Michael Williams",
         status: "Paid",
@@ -38,6 +42,7 @@ const invoiceData = [
     {
         id:"INV-0100",
         date:"Nov 1, 2023",
+        due_date:"Nov 5 2023",
         vehicle: "Coupe",
         client: "Olivia Brown",
         status: "Paid",

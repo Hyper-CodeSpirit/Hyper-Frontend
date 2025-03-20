@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { data } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 class BaseAPI {
   constructor() {
@@ -49,14 +50,22 @@ class BaseAPI {
     console.error('API Error:', error);
     if (error.response) {
       console.error('API Response Error:', error.response.data);
-      throw new Error(error.response.data.message || 'API Error');
+      return this.swallError('API Error', error.response.data.message);
     } else if (error.request) {
       console.error('API Request Error: No response received');
-      throw new Error('No response from server');
+      return this.swallError('API Error', 'No response from server');
     } else {
       console.error('API Configuration Error:', error.message);
-      throw new Error(error.message);
+      return this.swallError('API Error', error.message);
     }
+  }
+
+  swallError(title, text) {
+    Swal.fire({
+                icon: "error",
+                title: title,
+                text: text,
+              });
   }
 }
 
