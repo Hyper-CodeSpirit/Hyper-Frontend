@@ -1,8 +1,29 @@
 
 .invoice-container{
-    margin: 3%;
     font-size: 18px;
-    padding: 5px;
+    padding: 10px;
+    color: var(--textColor);
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .title {
+            font-size: 30px;
+            font-weight: 600;
+            color: var(--textColor);
+        }
+    }
+
+    .header-btns {
+        display: flex;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+    }
 
     .invoice-details{
         margin-top: 10px;
@@ -10,81 +31,336 @@
 
     .table-caption{
         margin: 10px 10px 0 15px;
-        font-size: 25px;
+        font-size: 28px;
+        font-weight: 600;
+        color: var(--textColor);
     }
-
 
     .add-invoice-btn {
-        font-size: 16px;
-        max-width: 160px;
-        border: none;
-        background-color: #3E8DD4CC;
-        color: black;
-        display: flex; 
+        display: flex;
         align-items: center;
-        justify-content: flex-end;
-        margin-left: 55%;
-        padding: 8px 12px;
-    }
-    
-    .add-invoice-btn .add-btn {
-        padding: 2px; /* Keeps the padding around the text */
-    }
-    
-    .add-invoice-btn:hover {
-        background-color: #3E8DD4;
-    }
-    
-    
+        justify-content: center;
+        background-color: var(--primary);
+        color: var(--textColor);
+        border: none;
+        border-radius: 8px;
+        padding: 8px 14px;
+        font-size: 15px;
+        font-weight: 500;
+        transition: background-color 0.3s;
+        cursor: pointer;
+        margin-left: 60px;
+
+        svg {
+            margin-right: 6px;
+        }
+
+        &:hover {
+            background-color: var(--secondary);
+        }
+
+        &:active {
+            transform: scale(0.97);
+        }
+    }    
     
     
 .menu-invoice-action{
+
     .dropdown-toggle:after {
-        border: 0;
+        border: none;
      }
 
      .menu-invoice-dropdown{
-        background-color: transparent;
+        background-color: var(--primary);
         color: var(--softTextColor);
         border: none;
 
         &:hover{
-            background-color: transparent;
+            background-color: var(--secondary);
             color: var(--softTextColor);
         }
         &:active{
-            background-color: transparent;
+            transform: scale(0.97);
             color: var(--softTextColor);
         }
      }
 }
 
-.menu-status-action{
-    .dropdown-toggle:after {
-        border: 0;
-     }
-     
-     .menu-status-dropdown{
-        background-color: #3E8DD4CC;
-        color: var(--softTextColor);
-        border: none;
-        padding: 8px 12px;
-        // margin-left: 65%;
-        &:hover{
-            background-color: #3E8DD4;
-            color: var(--softTextColor);
-        }
-        &:active{
-            background-color: #3E8DD4;
-            color: var(--softTextColor);
-        }
-     }
-}
+
 .header-btns{
     margin-left: 50%;
 }
+
+.menu-status-action {
+    .dropdown-toggle::after {
+        border: 0;
+    }
+    .filter-status{
+        padding-left: 4px;
+    }
+    .menu-status-dropdown {
+        background-color: var(--primary);
+        color: var(--textColor);
+        border: none;
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-weight: 500;
+
+        &:hover,
+        &:active {
+            background-color: var(--secondary);
+            color: var(--bg);
+        }
+    }
+
+    /* Dropdown Menu */
+    .dropdown-menu {
+        background-color: var(--softBg);
+        border: 1px solid var(--seperatoor);
+        border-radius: 8px;
+        color: var(--textColor);
+        min-width: 180px;
+
+        .dropdown-item {
+            color: var(--textColor);
+            padding: 8px 12px;
+
+            &:hover {
+                background-color: var(--secondary);
+                color: var(--bg);
+            }
+        }
+    }
+}
+    /* Invoice Table */
+    .invoice-details {
+        background-color: var(--bg);
+        border-radius: 12px;
+        margin-top: 10px;
+        padding: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        transition: background-color 0.1s;
+
+        .table-caption {
+            margin-bottom: 10px;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--textColor);
+        }
+
+        hr {
+            border-color: var(--seperatoor);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: var(--textColor);
+            th {
+                color: var(--softTextColor);
+                background-color: var(--bg);
+                font-weight: 600;
+                padding: 10px;
+                text-align: center;
+            }
+
+            td {
+                color: var(--softTextColor);
+                background-color: var(--bg);
+                padding: 10px;
+                vertical-align: middle;
+                font-size: 15px;
+                text-align: center;
+            }
+
+            tr:hover {
+                background-color: var(--seperatoor);
+                transition: background-color 0.1s;
+            }
+        }
+    }
+
+    /* Action Dropdown in Table */
+    .menu-invoice-action {
+        .dropdown-toggle::after {
+            border: 0;
+        }
+
+        .menu-invoice-dropdown {
+            background-color: transparent;
+            color: var(--softTextColor);
+            border: none;
+            padding: 5px;
+
+            &:hover,
+            &:active {
+                background-color: transparent;
+                color: var(--textColor);
+            }
+        }
+
+        .dropdown-menu {
+            background-color: var(--softBg);
+            border: 1px solid var(--seperatoor);
+            border-radius: 8px;
+
+            .dropdown-item {
+                color: var(--textColor);
+
+                &:hover {
+                    background-color: var(--secondary);
+                    color: var(--bg);
+                }
+            }
+        }
+    }
+  
+        .status-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+            min-width: 90px;
+            text-align: center;
+            text-transform: capitalize;
+            color: var(--textColor);
+    
+            &.paid {
+                background-color: #28a745; // green
+            }
+    
+            &.pending {
+                background-color: #ffc107; // yellow
+            }
+    
+            &.overdue {
+                background-color: #dc3545; // red
+            }
+    }
+
+    /* Responsive Adjustments */
+    @media screen and (max-width: 1024px) {
+        .header {
+            flex-direction: column;
+            align-items: flex-start;
+
+            .title {
+                margin-bottom: 10px;
+            }
+        }
+
+        .header-btns {
+            justify-content: flex-start;
+            margin-left: 0;
+        }
+
+        .invoice-details {
+            font-size: 14px;
+            padding: 10px;
+
+            table th,
+            table td {
+                padding: 8px;
+                font-size: 13px;
+            }
+        }
+
+        .add-invoice-btn,
+        .menu-status-dropdown {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    @media screen and (max-width: 640px) {
+        .invoice-details {
+            overflow-x: auto;
+        }
+
+        table {
+            font-size: 13px;
+            min-width: 700px;
+            /* Enables horizontal scroll */
+        }
+
+        .header {
+            .title {
+                font-size: 22px;
+            }
+        }
+
+        .add-invoice-btn {
+            font-size: 14px;
+            padding: 6px 10px;
+        }
+    }
+.invoice-download-btn {
+    margin-top: 5px;
+    color: var(--textColor);
+    background-color: var(--primary);
+    border-color: var(--primary);
+
+    &:hover,
+    &:active {
+        background-color: var(--secondary);
+        color: var(--bg);
+    }
 }
 
-.add-modal{
-    
+.report-btn {
+    margin-left: 5px;
+    font-size: 17px;
 }
+
+}
+
+
+.pagination {
+    display: flex;
+    gap: 0.5rem;
+
+    button {
+        background-color: var(--softBg); // light gray
+        color: var(--textColor);
+        border: 1px solid #dee2e6;
+        padding: 0.35rem 0.75rem;
+        cursor: pointer;
+        border-radius: 0.25rem;
+        font-weight: 400;
+        font-size: 13px;
+        transition: background-color 0.2s;
+        &:hover:not(:disabled) {
+            background-color: var(--primary);
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        &.active {
+            background-color: var(--secondary); // Bootstrap primary
+            color: var(--textColor);
+        }
+        
+    }
+    .dots {
+        color: var(--textColor);
+    }
+}
+
+.modal .modal-header,
+.modal .modal-footer,
+.modal .modal-body {
+    background-color: var(--bg) !important;
+    color: var(--textColor) !important;
+}
+.modal{
+    border-radius: 12px;
+    border-color: var(--bg);
+}
+[data-theme='dark'] .btn-close {
+    filter: invert(1);
+}
+
